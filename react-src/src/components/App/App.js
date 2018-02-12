@@ -6,9 +6,24 @@ import io from 'socket.io-client';
 import TableUser from '../TableUser/TableUser';
 import ModalUser from '../ModalUser/ModalUser';
 
+import FishPage from '../Pages/FishPage';
+import PurchasePage from '../Pages/PurchasePage';
+import OrderPage from '../Pages/OrderPage';
+import ReportsPage from '../Pages/ReportsPage';
+
+
 import logo from '../../logo.svg';
 import shirts from '../../shirts.png';
 import './App.css';
+
+import { Tab } from 'semantic-ui-react';
+
+const panes = [
+  { menuItem: 'Fish Types', render: () => <Tab.Pane attached={false}><FishPage /></Tab.Pane> },
+  { menuItem: 'Buy', render: () => <Tab.Pane attached={false}><PurchasePage /></Tab.Pane> },
+  { menuItem: 'Sell', render: () => <Tab.Pane attached={false}><OrderPage /></Tab.Pane> },
+  { menuItem: 'Reports', render: () => <Tab.Pane attached={false}><ReportsPage /></Tab.Pane> },
+];
 
 class App extends Component {
 
@@ -31,7 +46,6 @@ class App extends Component {
 
   // Place socket.io code inside here
   componentDidMount() {
-    this.fetchUsers();
     this.socket.on('visitor enters', data => this.setState({ online: data }));
     this.socket.on('visitor exits', data => this.setState({ online: data }));
     this.socket.on('add', data => this.handleUserAdded(data));
@@ -86,38 +100,12 @@ class App extends Component {
       <div>
         <div className='App'>
           <div className='App-header'>
-            <img src={logo} className='App-logo' alt='logo' />
-            <h1 className='App-intro'>MERN CRUD</h1>
-            <p>A simple records system using MongoDB, Express.js, React.js, and Node.js with real-time Create, Read, Update, and Delete operations using Socket.io.</p>
-            <p>REST API was implemented on the back-end. Semantic UI React was used for the UI.</p>
-            <p>
-              <a className='social-link' href='https://github.com/cefjoeii' target='_blank' rel='noopener noreferrer'>GitHub</a> &bull; <a className='social-link' href='https://linkedin.com/in/cefjoeii' target='_blank' rel='noopener noreferrer'>LinkedIn</a> &bull; <a className='social-link' href='https://twitter.com/cefjoeii' target='_blank' rel='noopener noreferrer'>Twitter</a>
-            </p>
-            <a className='shirts' href='https://www.teepublic.com/user/codeweario' target='_blank' rel='noopener noreferrer'>
-              <img src={shirts} alt='Programmer Shirts' />
-              <span>Ad</span>
-            </a>
+          <h1> Welcome to Fish Mart </h1>
           </div>
         </div>
         <Container>
-          <ModalUser
-            headerTitle='Add User'
-            buttonTriggerTitle='Add New'
-            buttonSubmitTitle='Add'
-            buttonColor='green'
-            onUserAdded={this.handleUserAdded}
-            server={this.server}
-            socket={this.socket}
-          />
-          <em id='online'>{`${online} ${noun} ${verb} online.`}</em>
-          <TableUser
-            onUserUpdated={this.handleUserUpdated}
-            onUserDeleted={this.handleUserDeleted}
-            users={this.state.users}
-            server={this.server}
-            socket={this.socket}
-          />
-        </Container>
+          <Tab menu={{ secondary: true, pointing: true }} panes={panes} onTabChange={this.onTabChange} />
+        </Container>   
         <br/>
       </div>
     );
