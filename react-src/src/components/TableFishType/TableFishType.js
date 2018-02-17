@@ -4,12 +4,12 @@ import { Table } from 'semantic-ui-react';
 import ModalUser from '../ModalUser/ModalUser';
 import ModalConfirmDelete from '../ModalConfirmDelete/ModalConfirmDelete';
 
+import FaPrint from 'react-icons/lib/fa/print';
+
 export default class TableFishType extends Component {
 
   render() {
     let fishTypes = this.props.fishTypes;
-    const user = {};
-
     fishTypes = fishTypes.map((fishType) => 
       <Table.Row key={fishType._id}>
         <Table.Cell>{fishType.name}</Table.Cell>
@@ -17,24 +17,27 @@ export default class TableFishType extends Component {
         <Table.Cell>{fishType.stock}</Table.Cell>
         <Table.Cell>
           <ModalUser
-            headerTitle='Edit User'
+            headerTitle='Edit Fish Type'
             buttonTriggerTitle='Edit'
             buttonSubmitTitle='Save'
             buttonColor='blue'
-            userID={user._id}
-            onUserUpdated={this.props.onUserUpdated}
+            ID={fishType._id}
+            onUpdate={this.props.onUpdate}
             server={this.props.server}
             socket={this.props.socket}
+            type="FishTypeForm"
           />
           <ModalConfirmDelete
-            headerTitle='Delete User'
+            headerTitle='Delete Fish Type'
             buttonTriggerTitle='Delete'
-            buttonColor='black'
-            user={user}
-            onUserDeleted={this.props.onUserDeleted}
+            buttonColor='red'
+            entity={fishType}
+            entityName="fishTypes"
+            onDelete={this.props.onDelete}
             server={this.props.server}
             socket={this.props.socket}
           />
+          <FaPrint color='black' style = { {fontSize: '22px', marginLeft: '12px',}} />
         </Table.Cell>
       </Table.Row>
     );
@@ -49,6 +52,7 @@ export default class TableFishType extends Component {
             <Table.HeaderCell>Name</Table.HeaderCell>
             <Table.HeaderCell>Category</Table.HeaderCell>
             <Table.HeaderCell>Stock</Table.HeaderCell>
+            <Table.HeaderCell></Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>

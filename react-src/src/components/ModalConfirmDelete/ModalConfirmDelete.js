@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import { Button, Modal } from 'semantic-ui-react';
 import axios from 'axios';
 
+import FaTrash from 'react-icons/lib/fa/trash-o';
+
 class ModalConfirmDelete extends Component {
 
   constructor(props) {
     super(props);
 
     this.state ={
-      modalOpen: false
+      modalOpen: false,
     }
 
     this.handleOpen = this.handleOpen.bind(this);
@@ -21,16 +23,17 @@ class ModalConfirmDelete extends Component {
 
   handleSubmit(e) {
 
-    let params = e.target.getAttribute('data-userID');
+    let params = e.target.getAttribute('data-ID');
+    const entityName = this.props.entityName;
 
     axios({
       method: 'delete',
       responseType: 'json',
-      url: `${this.props.server}/api/users/${params}`,
+      url: `${this.props.server}/api/${entityName}/${params}`,
     })
     .then((response) => {
       this.handleClose();
-      this.props.onUserDeleted(response.data.result);
+      this.props.onDelete(response.data.result);
       this.props.socket.emit('delete', response.data.result);
     })
     .catch((err) => {
@@ -40,9 +43,20 @@ class ModalConfirmDelete extends Component {
   }
 
   render() {
+    const entity = this.props.entity;
+    const entityName = this.props.entityName;
+    let name = "";
+
+    if(entity && entityName === 'fishTypes')
+        name = entity.name;
+    else if (entity && (entityName === 'purchases' || entityName === 'orders'))    
+        name = entity.fishName;
     return (
       <Modal
-        trigger={<Button onClick={this.handleOpen} color={this.props.buttonColor}>{this.props.buttonTriggerTitle}</Button>}
+        trigger={<FaTrash onClick={this.handleOpen}
+        color={this.props.buttonColor}
+        style={ {fontSize: '22px'}}
+        />}
         open={this.state.modalOpen}
         onClose={this.handleClose}
         dimmer='inverted'
@@ -50,10 +64,10 @@ class ModalConfirmDelete extends Component {
       >
         <Modal.Header>{this.props.headerTitle}</Modal.Header>
         <Modal.Content>
-          <p>Are you sure you want to delete <strong>{this.props.user.name}</strong>?</p>
+          <p>Are you sure you want to delete <strong>{name}</strong>?</p>
         </Modal.Content>
         <Modal.Actions>
-          <Button onClick={this.handleSubmit} data-userID={this.props.user._id} color='red'>Yes</Button>
+          <Button onClick={this.handleSubmit} data-ID={this.props.entity._id} color='red'>Yes</Button>
           <Button onClick={this.handleClose} color='black'>No</Button>
           </Modal.Actions>
       </Modal>

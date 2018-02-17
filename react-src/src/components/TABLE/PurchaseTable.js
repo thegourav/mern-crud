@@ -8,9 +8,6 @@ export default class PurchaseTable extends Component {
 
   render() {
     let purchases = this.props.purchases;
-    const purchase = {};
-    const user = {};
-
     purchases = purchases.map((purchase) => 
       <Table.Row key={purchase._id}>
         <Table.Cell>{purchase.fishName}</Table.Cell>
@@ -22,21 +19,23 @@ export default class PurchaseTable extends Component {
         <Table.Cell>{purchase.date}</Table.Cell>
         <Table.Cell>
           <ModalUser
-            headerTitle='Edit User'
+            headerTitle='Edit Record'
             buttonTriggerTitle='Edit'
             buttonSubmitTitle='Save'
             buttonColor='blue'
-            userID={user._id}
-            onUserUpdated={this.props.onUserUpdated}
+            ID={purchase._id}
+            onUpdate={this.props.onUpdate}
             server={this.props.server}
             socket={this.props.socket}
+            type="PurchaseForm"
           />
           <ModalConfirmDelete
-            headerTitle='Delete User'
+            headerTitle='Delete Purchase Record'
             buttonTriggerTitle='Delete'
-            buttonColor='black'
-            user={user}
-            onUserDeleted={this.props.onUserDeleted}
+            buttonColor='red'
+            entity={purchase}
+            entityName="purchases"
+            onDelete={this.props.onDelete}
             server={this.props.server}
             socket={this.props.socket}
           />

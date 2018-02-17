@@ -8,9 +8,6 @@ export default class OrderTable extends Component {
 
   render() {
     let orders = this.props.orders;
-    const order = {};
-    const user = {};
-
     orders = orders.map((order) => 
       <Table.Row key={order._id}>
         <Table.Cell>{order.fishName}</Table.Cell>
@@ -25,17 +22,19 @@ export default class OrderTable extends Component {
             buttonTriggerTitle='Edit'
             buttonSubmitTitle='Save'
             buttonColor='blue'
-            userID={user._id}
-            onUserUpdated={this.props.onUserUpdated}
+            ID={order._id}
+            onUpdate={this.props.onUpdate}
             server={this.props.server}
             socket={this.props.socket}
+            type="OrderForm"
           />
           <ModalConfirmDelete
-            headerTitle='Delete User'
+            headerTitle='Delete Order Record'
             buttonTriggerTitle='Delete'
-            buttonColor='black'
-            user={user}
-            onUserDeleted={this.props.onUserDeleted}
+            buttonColor='red'
+            entity={order}
+            entityName="orders"
+            onDelete={this.props.onDelete}
             server={this.props.server}
             socket={this.props.socket}
           />

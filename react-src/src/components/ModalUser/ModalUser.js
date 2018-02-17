@@ -6,6 +6,8 @@ import FishTypeForm from '../FormUser/FishTypeForm';
 import PurchaseForm from '../FormUser/PurchaseForm';
 import OrderForm from '../FormUser/OrderForm';
 
+import FaEdit from 'react-icons/lib/fa/edit';
+
 class ModalUser extends Component {
 
   getProperForm(type){
@@ -54,9 +56,13 @@ class ModalUser extends Component {
   render() {
     const type = this.props.type;
     const formData = this.getProperForm(type);
+    const btnStyle = {
+      fontSize:'25px',
+      marginRight: '12px',
+    };
     return (
       <Modal
-        trigger={<Button color={this.props.buttonColor}>{this.props.buttonTriggerTitle}</Button>}
+        trigger={<FaEdit color={this.props.buttonColor} style={btnStyle}></FaEdit>}
         dimmer='inverted'
         size='tiny'
         closeIcon='close'
