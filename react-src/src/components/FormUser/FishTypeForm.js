@@ -154,7 +154,7 @@ class FishTypeForm extends Component {
         <Message
           success
           color='green'
-          header='Nice one!'
+          header='Nice one! Click outside to close the dialog'
           content={formSuccessMessage}
         />
         <Message

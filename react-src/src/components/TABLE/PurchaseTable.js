@@ -4,6 +4,8 @@ import { Table } from 'semantic-ui-react';
 import ModalUser from '../ModalUser/ModalUser';
 import ModalConfirmDelete from '../ModalConfirmDelete/ModalConfirmDelete';
 
+import Export from '../Print/Export';
+
 export default class PurchaseTable extends Component {
 
   render() {
@@ -39,6 +41,7 @@ export default class PurchaseTable extends Component {
             server={this.props.server}
             socket={this.props.socket}
           />
+          <Export divName='purchase' />
         </Table.Cell>
       </Table.Row>
     );
@@ -57,6 +60,7 @@ export default class PurchaseTable extends Component {
             <Table.HeaderCell>Rate</Table.HeaderCell>
             <Table.HeaderCell>Price</Table.HeaderCell>
             <Table.HeaderCell>Date</Table.HeaderCell>
+            <Table.HeaderCell></Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>

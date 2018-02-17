@@ -5,6 +5,9 @@ import FishPage from '../Pages/FishPage';
 import PurchasePage from '../Pages/PurchasePage';
 import OrderPage from '../Pages/OrderPage';
 import ReportsPage from '../Pages/ReportsPage';
+import logo from '../../logo.svg';
+
+import FaUser from 'react-icons/lib/fa/user';
 
 import './App.css';
 
@@ -23,7 +26,9 @@ class App extends Component {
       <div>
         <div className='App'>
           <div className='App-header'>
-          <h1> Welcome to Fish Mart </h1>
+          <img src={logo} className='App-logo' alt='logo' />
+          <div className="title"><span> Welcome to Fish Mart </span></div>
+          <div className="welcome"><span> <FaUser color='#fff' style={{fontSize:'20px',marginBottom:'3px'}} /> Welcome User </span></div>
           </div>
         </div>
         <Container>

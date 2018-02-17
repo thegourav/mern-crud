@@ -3,6 +3,7 @@ import { Table } from 'semantic-ui-react';
 
 import ModalUser from '../ModalUser/ModalUser';
 import ModalConfirmDelete from '../ModalConfirmDelete/ModalConfirmDelete';
+import Export from '../Print/Export';
 
 export default class OrderTable extends Component {
 
@@ -38,6 +39,7 @@ export default class OrderTable extends Component {
             server={this.props.server}
             socket={this.props.socket}
           />
+          <Export divName='order' />
         </Table.Cell>
       </Table.Row>
     );
@@ -55,6 +57,7 @@ export default class OrderTable extends Component {
             <Table.HeaderCell>Rate</Table.HeaderCell>
             <Table.HeaderCell>Price</Table.HeaderCell>
             <Table.HeaderCell>Date</Table.HeaderCell>
+            <Table.HeaderCell></Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>

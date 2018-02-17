@@ -5,8 +5,6 @@ import TableFishType from '../TableFishType/TableFishType';
 import ModalUser from '../ModalUser/ModalUser';
 import io from 'socket.io-client';
 
-import Export from '../Print/Export';
-
 export default class FishPage extends Component{
     constructor(...args){
         super(...args);
@@ -84,8 +82,8 @@ export default class FishPage extends Component{
                       socket={this.socket}
                       type="FishTypeForm"
                       style={floatLeft}
+                      renderAs='button'
                   />
-                    <Export style={floatRight} />
                 </div>
                   <TableFishType 
                     fishTypes={this.state.fishTypes}

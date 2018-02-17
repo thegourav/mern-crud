@@ -60,9 +60,15 @@ class ModalUser extends Component {
       fontSize:'25px',
       marginRight: '12px',
     };
+    const getButton = () => {
+      if(this.props.renderAs === 'button')
+        return (<Button color={this.props.buttonColor}>{this.props.buttonTriggerTitle}</Button>);
+      else
+      return (<FaEdit color={this.props.buttonColor} style={btnStyle}/>)
+    }
     return (
       <Modal
-        trigger={<FaEdit color={this.props.buttonColor} style={btnStyle}></FaEdit>}
+        trigger={getButton()}
         dimmer='inverted'
         size='tiny'
         closeIcon='close'

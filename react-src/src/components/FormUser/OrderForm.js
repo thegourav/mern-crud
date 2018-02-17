@@ -60,6 +60,10 @@ class OrderForm extends Component {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
 
+    if(name === 'rate') {
+      this.setState({ 'price': (Math.round(value * this.state.weight)) });
+    }
+
     this.setState({ [name]: value });
   }
 

@@ -62,6 +62,13 @@ class PurchaseForm extends Component {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
 
+    if(name === 'weight'){
+      this.setState({ 'actualWeight': (Math.round(value * .95)) });
+    }
+    if(name === 'rate'){
+      this.setState({ 'price': (Math.round(value * this.state.actualWeight)) });
+    }
+
     this.setState({ [name]: value });
   }
 
@@ -158,7 +165,7 @@ class PurchaseForm extends Component {
           <Form.Input
             label='Supplier Name'
             type='input'
-            placeholder='40kg'
+            placeholder='Supplier Name'
             min={0}
             max={1000000}
             name='supplierName'
@@ -210,7 +217,7 @@ class PurchaseForm extends Component {
         <Message
           success
           color='green'
-          header='Nice one!'
+          header='Nice one! Click outside to close the dialog'
           content={formSuccessMessage}
         />
         <Message

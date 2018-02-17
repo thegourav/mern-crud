@@ -4,7 +4,14 @@ import { Table } from 'semantic-ui-react';
 import ModalUser from '../ModalUser/ModalUser';
 import ModalConfirmDelete from '../ModalConfirmDelete/ModalConfirmDelete';
 
-import FaPrint from 'react-icons/lib/fa/print';
+const getColor = (stock) => {
+  if (stock < 20)
+    return {color:'red',fontSize:'15px',};
+  else if (stock >= 20 && stock < 500 )
+    return {color:'green'};
+  else if (stock > 500)
+    return {color: '#fbbd08'};    
+}
 
 export default class TableFishType extends Component {
 
@@ -14,7 +21,7 @@ export default class TableFishType extends Component {
       <Table.Row key={fishType._id}>
         <Table.Cell>{fishType.name}</Table.Cell>
         <Table.Cell>{fishType.category}</Table.Cell>
-        <Table.Cell>{fishType.stock}</Table.Cell>
+        <Table.Cell style={getColor(fishType.stock)}>{fishType.stock}</Table.Cell>
         <Table.Cell>
           <ModalUser
             headerTitle='Edit Fish Type'
@@ -37,7 +44,6 @@ export default class TableFishType extends Component {
             server={this.props.server}
             socket={this.props.socket}
           />
-          <FaPrint color='black' style = { {fontSize: '22px', marginLeft: '12px',}} />
         </Table.Cell>
       </Table.Row>
     );

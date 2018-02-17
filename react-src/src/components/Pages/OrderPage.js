@@ -77,13 +77,16 @@ export default class OrderPage extends Component{
                       server={this.server}
                       socket={this.socket}
                       type="OrderForm"
+                      renderAs='button'
                   />
+                  <div id="order">
                   <OrderTable
                    orders={this.state.orders} 
                    server={this.server}
                    socket={this.socket}
                    onUpdate={this.handleUpdate}
                    onDelete={this.handleDelete}/>
+                   </div>
               </Container>
           </div>
       )

@@ -4,31 +4,29 @@ import React, {Component, PropTypes} from 'react';
 // the built versions are directly consumable
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
-
+import FaPrint from 'react-icons/lib/fa/print';
 
 export default class Export extends Component {
   constructor(props) {
     super(props);
+    this.printDocument = this.printDocument.bind(this);
   }
 
   printDocument() {
-    const input = document.getElementById('fishPage');
+    const divName = this.props.divName;
+    const input = document.getElementById(divName);
     html2canvas(input)
       .then((canvas) => {
         const imgData = canvas.toDataURL('image/png');
         const pdf = new jsPDF();
         pdf.addImage(imgData, 'JPEG', 0, 0);
-        // pdf.output('dataurlnewwindow');
         pdf.save("download.pdf");
       })
     ;
   }
 
   render() {
-    return (<div>
-      <div className="mb5">
-        <button onClick={this.printDocument}>Print</button>
-      </div>
-    </div>);
+    return (
+    <FaPrint color='black' style = { {fontSize: '22px', marginLeft: '12px'}} onClick={this.printDocument} />);
   }
 }

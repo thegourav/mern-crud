@@ -78,13 +78,16 @@ export default class PurchasePage extends Component{
                       onAdd={this.handleAdd}
                       server={this.server}
                       socket={this.socket}
+                      renderAs='button'
                   />
+                  <div id="purchase">
                   <PurchaseTable
                    purchases={this.state.purchases}
                    server={this.server}
                    socket={this.socket}
                    onUpdate={this.handleUpdate}
                    onDelete={this.handleDelete} />
+                   </div>
               </Container>
           </div>
       )
