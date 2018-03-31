@@ -122,7 +122,7 @@ class FishTypeForm extends Component {
     return (
       <Form className={formClassName} onSubmit={this.handleSubmit}>
         <Form.Input
-          label='Name'
+          label={this.props.L10.Name}
           type='text'
           placeholder='ILISH'
           name='name'
@@ -134,14 +134,14 @@ class FishTypeForm extends Component {
         <Form.Group widths='equal'>
           <Form.Field
             control={Select}
-            label='Category'
+            label={this.props.L10.Category}
             options={categoryOptions}
             placeholder='Big'
             value={this.state.category}
             onChange={this.handleSelectChange}
           />
           <Form.Input
-            label='Stock'
+            label={this.props.L10.Stock}
             type='number'
             placeholder='40kg'
             min={0}
@@ -154,7 +154,7 @@ class FishTypeForm extends Component {
         <Message
           success
           color='green'
-          header='Nice one! Click outside to close the dialog'
+          header={this.props.L10.CompleteMsg}
           content={formSuccessMessage}
         />
         <Message

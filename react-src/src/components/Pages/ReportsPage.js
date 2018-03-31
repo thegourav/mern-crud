@@ -48,7 +48,7 @@ export default class ReportsPage extends Component {
         return (
             <div className="report_main" style = {{display: 'flex',alignItems: 'center' }}>
                 <div className="current-stock" style = {{width:'50%'}}>
-                    <h1> Current Stock </h1>
+                    <h1>{this.props.L10.CurrentStock}</h1>
                     <PieChart width={800} height={400}>
                         <Pie isAnimationActive={false} data={this.state.fishStock} dataKey="value" cx={200} cy={200}
                             outerRadius={80} fill="#8884d8" label>
@@ -61,7 +61,7 @@ export default class ReportsPage extends Component {
                 </div>
 
                 <div className="barchart">
-                    <h1> Purchase/Sales per Month </h1>
+                    <h1>{this.props.L10.PurchaseSellPerMonth}</h1>
                     <BarChart width={600} height={300} data={data}
                         margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                         <XAxis dataKey="purchase" />

@@ -13,6 +13,7 @@ class ModalUser extends Component {
   getProperForm(type){
     if(type === 'FishTypeForm')
     return (<FishTypeForm
+    L10={this.props.L10}
     buttonSubmitTitle={this.props.buttonSubmitTitle}
     buttonColor={this.props.buttonColor}
     ID={this.props.ID}
@@ -23,6 +24,7 @@ class ModalUser extends Component {
     />)
     if(type === 'PurchaseForm')
     return (<PurchaseForm
+    L10={this.props.L10}
     buttonSubmitTitle={this.props.buttonSubmitTitle}
     buttonColor={this.props.buttonColor}
     ID={this.props.ID}
@@ -33,6 +35,7 @@ class ModalUser extends Component {
     />)
     if(type === 'OrderForm')
     return (<OrderForm
+    L10={this.props.L10}
     buttonSubmitTitle={this.props.buttonSubmitTitle}
     buttonColor={this.props.buttonColor}
     ID={this.props.ID}
@@ -43,6 +46,7 @@ class ModalUser extends Component {
     />)
     else
     return (<FormUser
+    L10={this.props.L10}
     buttonSubmitTitle={this.props.buttonSubmitTitle}
     buttonColor={this.props.buttonColor}
     userID={this.props.userID}

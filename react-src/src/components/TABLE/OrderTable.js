@@ -19,6 +19,7 @@ export default class OrderTable extends Component {
         <Table.Cell>{order.date}</Table.Cell>
         <Table.Cell>
           <ModalUser
+            L10={this.props.L10}
             headerTitle='Edit User'
             buttonTriggerTitle='Edit'
             buttonSubmitTitle='Save'
@@ -51,12 +52,12 @@ export default class OrderTable extends Component {
       <Table singleLine>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>Fish Name</Table.HeaderCell>
-            <Table.HeaderCell>Customer Name</Table.HeaderCell>
-            <Table.HeaderCell>Weight</Table.HeaderCell>
-            <Table.HeaderCell>Rate</Table.HeaderCell>
-            <Table.HeaderCell>Price</Table.HeaderCell>
-            <Table.HeaderCell>Date</Table.HeaderCell>
+            <Table.HeaderCell>{this.props.L10.FishName}</Table.HeaderCell>
+            <Table.HeaderCell>{this.props.L10.CustomerName}</Table.HeaderCell>
+            <Table.HeaderCell>{this.props.L10.Weight}</Table.HeaderCell>
+            <Table.HeaderCell>{this.props.L10.Rate}</Table.HeaderCell>
+            <Table.HeaderCell>{this.props.L10.Price}</Table.HeaderCell>
+            <Table.HeaderCell>{this.props.L10.Date}</Table.HeaderCell>
             <Table.HeaderCell></Table.HeaderCell>
           </Table.Row>
         </Table.Header>

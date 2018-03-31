@@ -69,9 +69,10 @@ export default class OrderPage extends Component{
           <div>
               <Container>
                   <ModalUser
-                      headerTitle='Place an Order'
-                      buttonTriggerTitle='Add New'
-                      buttonSubmitTitle='Add'
+                      L10={this.props.L10}
+                      headerTitle={this.props.L10.PlaceAnOrder}
+                      buttonTriggerTitle={this.props.L10.AddNew}
+                      buttonSubmitTitle={this.props.L10.ClickTOSell}
                       buttonColor='green'
                       onAdd={this.handleAdd}
                       server={this.server}
@@ -81,6 +82,7 @@ export default class OrderPage extends Component{
                   />
                   <div id="order">
                   <OrderTable
+                   L10={this.props.L10} 
                    orders={this.state.orders} 
                    server={this.server}
                    socket={this.socket}

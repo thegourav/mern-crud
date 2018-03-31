@@ -156,16 +156,16 @@ class PurchaseForm extends Component {
         <Form.Group widths='equal'>
           <Form.Field
             control={Select}
-            label='Fish Types'
+            label={this.props.L10.fishTypes}
             options={this.state.fishTypeList}
-            placeholder='Select a fish type'
+            placeholder={this.props.L10.SelectFishType}
             value={this.state._fishTypeID}
             onChange={this.handleSelectChange}
           />
           <Form.Input
-            label='Supplier Name'
+            label={this.props.L10.SupplierName}
             type='input'
-            placeholder='Supplier Name'
+            placeholder={this.props.L10.SupplierName}
             min={0}
             max={1000000}
             name='supplierName'
@@ -175,7 +175,7 @@ class PurchaseForm extends Component {
         </Form.Group>
         <Form.Group widths='equal'>
         <Form.Input
-            label='Weight'
+            label={this.props.L10.Weight}
             type='number'
             placeholder='40kg'
             min={0}
@@ -185,7 +185,7 @@ class PurchaseForm extends Component {
             onChange={this.handleInputChange}
           />
         <Form.Input
-            label='Actual Weight'
+            label={this.props.L10.ActualWeight}
             type='input'
             placeholder='40kg'
             min={0}
@@ -197,7 +197,7 @@ class PurchaseForm extends Component {
         </Form.Group>
         <Form.Group widths='equal'>
         <Form.Input
-            label='Rate'
+            label={this.props.L10.Rate}
             type='input'
             placeholder='500/kg'
             min={0}
@@ -207,8 +207,7 @@ class PurchaseForm extends Component {
             onChange={this.handleInputChange}
           />
           <Form.Input
-            label='Price'
-            type='input'
+            label={this.props.L10.Price}
             name='price'
             value={this.state.price}
             onChange={this.handleInputChange}
@@ -217,7 +216,7 @@ class PurchaseForm extends Component {
         <Message
           success
           color='green'
-          header='Nice one! Click outside to close the dialog'
+          header={this.props.L10.CompleteMsg}
           content={formSuccessMessage}
         />
         <Message

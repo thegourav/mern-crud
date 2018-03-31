@@ -62,5 +62,11 @@ a.shirts {
   color:#FFF;
   float: right;
   position: relative;
-  top: -15px;
+  top: -25px;
+}
+.language-picker {
+  width:100, 
+}
+#order,#purchase {
+  margin-top:1em;
 }

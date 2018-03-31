@@ -62,9 +62,6 @@ export default class FishPage extends Component{
     });
   }
   render(){
-      const floatRight = {
-          float: 'right',
-      }
       const floatLeft = {
         float: 'left',
     }
@@ -73,9 +70,10 @@ export default class FishPage extends Component{
               <Container>
                 <div>
                 <ModalUser
-                      headerTitle='Add Fish Type'
-                      buttonTriggerTitle='Add New'
-                      buttonSubmitTitle='Add'
+                      L10={this.props.L10} 
+                      headerTitle={this.props.L10.AddFishType}
+                      buttonTriggerTitle={this.props.L10.AddNew}
+                      buttonSubmitTitle={this.props.L10.Add}
                       buttonColor='green'
                       onAdd={this.handleAdd}
                       server={this.server}
@@ -85,7 +83,8 @@ export default class FishPage extends Component{
                       renderAs='button'
                   />
                 </div>
-                  <TableFishType 
+                  <TableFishType
+                    L10={this.props.L10} 
                     fishTypes={this.state.fishTypes}
                     server={this.server}
                     socket={this.socket}

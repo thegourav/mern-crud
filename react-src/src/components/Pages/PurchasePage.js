@@ -70,9 +70,10 @@ export default class PurchasePage extends Component{
           <div>
               <Container>
                   <ModalUser
-                      headerTitle='Buy fish'
-                      buttonTriggerTitle='Add New'
-                      buttonSubmitTitle='Add'
+                      L10={this.props.L10}
+                      headerTitle={this.props.L10.BuyFish}
+                      buttonTriggerTitle={this.props.L10.AddNew}
+                      buttonSubmitTitle={this.props.L10.ClickTOBuy}
                       buttonColor='green'
                       type="PurchaseForm"
                       onAdd={this.handleAdd}
@@ -82,6 +83,7 @@ export default class PurchasePage extends Component{
                   />
                   <div id="purchase">
                   <PurchaseTable
+                   L10={this.props.L10}
                    purchases={this.state.purchases}
                    server={this.server}
                    socket={this.socket}

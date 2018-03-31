@@ -24,6 +24,7 @@ export default class TableFishType extends Component {
         <Table.Cell style={getColor(fishType.stock)}>{fishType.stock}</Table.Cell>
         <Table.Cell>
           <ModalUser
+            L10={this.props.L10}
             headerTitle='Edit Fish Type'
             buttonTriggerTitle='Edit'
             buttonSubmitTitle='Save'
@@ -55,9 +56,9 @@ export default class TableFishType extends Component {
       <Table singleLine>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>Name</Table.HeaderCell>
-            <Table.HeaderCell>Category</Table.HeaderCell>
-            <Table.HeaderCell>Stock</Table.HeaderCell>
+            <Table.HeaderCell>{this.props.L10.Name}</Table.HeaderCell>
+            <Table.HeaderCell>{this.props.L10.Category}</Table.HeaderCell>
+            <Table.HeaderCell>{this.props.L10.Stock}</Table.HeaderCell>
             <Table.HeaderCell></Table.HeaderCell>
           </Table.Row>
         </Table.Header>

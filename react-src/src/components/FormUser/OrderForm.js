@@ -150,16 +150,16 @@ class OrderForm extends Component {
         <Form.Group widths='equal'>
           <Form.Field
             control={Select}
-            label='Fish Types'
+            label={this.props.L10.fishTypes}
             options={this.state.fishTypeList}
-            placeholder='Select a fish type'
+            placeholder={this.props.L10.SelectFishType}
             value={this.state._fishTypeID}
             onChange={this.handleSelectChange}
           />
           <Form.Input
-            label='Customer Name'
+            label={this.props.L10.CustomerName}
             type='input'
-            placeholder='customer name'
+            placeholder={this.props.L10.CustomerName}
             name='customerName'
             value={this.state.customerName}
             onChange={this.handleInputChange}
@@ -167,7 +167,7 @@ class OrderForm extends Component {
         </Form.Group>
         <Form.Group widths='equal'>
         <Form.Input
-            label='Weight'
+            label={this.props.L10.Weight}
             type='number'
             placeholder='40kg'
             min={0}
@@ -177,7 +177,7 @@ class OrderForm extends Component {
             onChange={this.handleInputChange}
           />
         <Form.Input
-            label='Discount'
+            label={this.props.L10.Discount}
             type='input'
             placeholder='40kg'
             min={0}
@@ -187,7 +187,7 @@ class OrderForm extends Component {
         </Form.Group>
         <Form.Group widths='equal'>
         <Form.Input
-            label='Rate'
+            label={this.props.L10.Rate}
             type='input'
             placeholder='500/kg'
             min={0}
@@ -197,7 +197,7 @@ class OrderForm extends Component {
             onChange={this.handleInputChange}
           />
           <Form.Input
-            label='Price'
+            label={this.props.L10.Price}
             type='input'
             name='price'
             value={this.state.price}
@@ -207,7 +207,7 @@ class OrderForm extends Component {
         <Message
           success
           color='green'
-          header='Nice one!'
+          header={this.props.L10.CompleteMsg}
           content={formSuccessMessage}
         />
         <Message
